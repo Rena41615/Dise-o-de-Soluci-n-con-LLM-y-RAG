@@ -1,3 +1,7 @@
 openai
 python-dotenv
 jupyterlab
+numpy
+langchain
+langchain-openai
+tiktoken

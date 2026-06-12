@@ -1,0 +1,128 @@
+# Configuración de EP3 - Observabilidad
+
+# Configuración del Agente
+agent:
+  name: "MetroAgent"
+  version: "1.0"
+  description: "Agente de soluciones con IA para Sistema Metro"
+
+# Métricas de Observabilidad
+metrics:
+  enabled: true
+  collection_interval: 60  # segundos
+  persistence: true
+  
+  # Métricas básicas
+  precision:
+    enabled: true
+    threshold: 0.85
+    
+  latency:
+    enabled: true
+    threshold_ms: 5000
+    
+  consistency:
+    enabled: true
+    threshold: 0.90
+    
+  error_frequency:
+    enabled: true
+    threshold_percent: 5.0
+    
+  resource_usage:
+    enabled: true
+    cpu_threshold_percent: 80.0
+    memory_threshold_mb: 1024
+
+# Trazabilidad
+tracing:
+  enabled: true
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  log_format: "json"
+  log_file: "results/logs/execution.log"
+  
+  # Detalle de trazas
+  trace_requests: true
+  trace_responses: true
+  trace_errors: true
+  trace_performance: true
+
+# Seguridad y Responsabilidad
+security:
+  enabled: true
+  
+  # Criterios éticos
+  ethics:
+    check_bias: true
+    check_fairness: true
+    
+  # Privacidad
+  privacy:
+    encrypt_logs: false  # Cambiar a true en producción
+    anonymize_data: true
+    data_retention_days: 90
+    
+  # Normativos
+  compliance:
+    gdpr_enabled: true
+    audit_trail: true
+
+# Dashboard
+dashboard:
+  enabled: true
+  framework: "streamlit"  # streamlit, grafana, kibana, powerbi
+  port: 8501
+  refresh_interval: 5  # segundos
+  
+  # Gráficos a mostrar
+  charts:
+    precision_trend: true
+    latency_distribution: true
+    error_rate_timeline: true
+    resource_usage_gauge: true
+    consistency_heatmap: true
+
+# Almacenamiento de Resultados
+storage:
+  metrics_path: "results/metrics_report.json"
+  logs_path: "results/logs/"
+  visualizations_path: "results/visualizations/"
+  
+  # Base de datos (opcional)
+  database:
+    enabled: false
+    type: "sqlite"  # sqlite, postgresql, mongodb
+    connection_string: "sqlite:///results/metrics.db"
+
+# Análisis y Recomendaciones
+analysis:
+  enabled: true
+  
+  # Ventanas de análisis
+  analysis_window_days: 7
+  rolling_average_window: 24  # horas
+  
+  # Umbrales de alerta
+  alerts:
+    precision_drop: 0.10  # 10% de caída
+    latency_increase: 2.0  # 2x aumento
+    error_spike: 5.0      # 5x aumento
+    resource_alert: 90.0  # porcentaje
+
+# Recomendaciones
+recommendations:
+  enabled: true
+  confidence_threshold: 0.75
+  max_recommendations: 10
+  
+  categories:
+    - performance
+    - security
+    - scalability
+    - sustainability
+
+---
+# Notas
+# - Modificar estos valores según tus necesidades específicas
+# - Consultar docs/ARCHITECTURE.md para cambios en producción
+# - El nivel de log DEBUG genera más overhead

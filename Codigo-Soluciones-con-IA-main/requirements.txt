@@ -1,0 +1,11 @@
+openai
+python-dotenv
+jupyterlab
+numpy
+langchain
+langchain-openai
+tiktoken
+streamlit
+pandas
+plotly
+psutil
